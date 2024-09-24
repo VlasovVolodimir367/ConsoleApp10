@@ -51,7 +51,7 @@ class Eclass : GeneralCar
     }
     public override string GetDescriptionBuyer()
     {
-        return $"This is a executive class car: {Brand}, {Model}, {Fuel}, {Year}, {Mileage}, {Price}";
+        return $"This is a executive class car: {Brand}, {Model}, {Fuel}, {Year}, {Mileage} km, {Price} $";
     }
 
 }
@@ -71,7 +71,7 @@ class Fclass : GeneralCar
     }
     public override string GetDescriptionBuyer()
     {
-        return $"This is a premium car: {Brand}, {Model}, {Fuel}, {Year}, {Mileage}, {Price}";
+        return $"This is a premium car: {Brand}, {Model}, {Fuel}, {Year}, {Mileage} km, {Price} $";
     }
 
 }
@@ -91,7 +91,7 @@ class Jclass : GeneralCar
     }
     public override string GetDescriptionBuyer()
     {
-        return $"This is a crossover: {Brand}, {Model}, {Fuel}, {Year}, {Mileage}, {Price}";
+        return $"This is a crossover: {Brand}, {Model}, {Fuel}, {Year}, {Mileage} km, {Price} $";
     }
 
 }
@@ -111,7 +111,7 @@ class Mclass : GeneralCar
     }
     public override string GetDescriptionBuyer()
     {
-        return $"This is a minibus: {Brand}, {Model}, {Fuel}, {Year}, {Mileage}, {Price}";
+        return $"This is a minibus: {Brand}, {Model}, {Fuel}, {Year}, {Mileage} km, {Price} $";
     }
 
 }
@@ -213,7 +213,7 @@ class Program
             Console.WriteLine("<2> - Year - decrease");
             Console.WriteLine("<3> - Price - increase");
             Console.WriteLine("<4> - Price - decrease");
-            Console.WriteLine("<5> - Price - QuickSort - sum");
+            Console.WriteLine("<5> - Price - sum");
             Console.WriteLine("<6> - Exit");
             Console.Write("Enter the serial number of the item to sort by: ");
             int menu369 = Convert.ToInt32(Console.ReadLine());
@@ -235,7 +235,9 @@ class Program
 
                 case 3:
                     {
-                        Sorting3();
+                        // Sorting3();
+                        QuickSort(0, carsNumber - 1);
+                        PrintAllCars();
                         Console.WriteLine("Successfully");
                         break;
                     }
@@ -247,8 +249,7 @@ class Program
                     }
                 case 5:
                     {
-                       // Sorting5();
-                        QuickSort(0,carsNumber-1);
+                        Sorting5();
                         Console.WriteLine("Successfully");
                         break;
                     }
@@ -275,7 +276,7 @@ class Program
         int pivot = cars[leftIndex].Price;
         int i = leftIndex;
         int j = rightIndex;
-        Console.WriteLine($"leftIndex: {i}, rightIndex: {j}, pivot: {pivot} ");
+       // Console.WriteLine($"leftIndex: {i}, rightIndex: {j}, pivot: {pivot} ");
         while (i <= j)
         {
             while (cars[i].Price < pivot)
@@ -302,10 +303,8 @@ class Program
         {
             QuickSort(i, rightIndex);
         }
-    }
-    
-
-    static void Sorting5()
+}
+static void Sorting5()
     {
         int sum = 0;
         for (int i = 0; i < carsNumber; i++)
@@ -313,7 +312,7 @@ class Program
             sum = sum + cars[i].Price;
 
         }
-        Console.WriteLine($"The sum of the cost of all cars: {sum}");
+        Console.WriteLine($"The sum of the cost of all cars: {sum} $");
     }
     static void Sorting2()
     {
